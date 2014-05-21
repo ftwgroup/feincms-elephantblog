@@ -97,7 +97,7 @@ class Entry(Base, ContentModelMixin):
     slug = models.SlugField(
         _('slug'), max_length=100,
         unique_for_date='published_on')
-    author = models.ForeignKey(
+    author = models.ManyToManyField(
         getattr(settings, 'AUTH_USER_MODEL', 'auth.User'),
         related_name='blogentries',
         limit_choices_to={'is_staff': True}, verbose_name=_('author'))
